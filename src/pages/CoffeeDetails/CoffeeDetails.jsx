@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router';
+import React from 'react';
+import { useLoaderData } from 'react-router';
 
 const CoffeeDetails = () => {
-    const {id} = useParams();
-    const coffees = useLoaderData();
-    const [coffeeDetails,setCoffeeDetails] = useState();
-
-    useEffect(()=>{
-        const findCoffee = coffees.find(coffee => coffee._id === id);
-        setCoffeeDetails(findCoffee);
-    },[id,coffees])
-    
-    if(!coffeeDetails){
-        return <span>Loading...</span>
-    }
-
-    const {name,price,supplier,chef,photo,category,details} = coffeeDetails;
+    const {name,price,supplier,chef,photo,category,details} = useLoaderData();
 
     return (
         <div className='max-w-4xl mx-auto my-10'>
-            <div className="flex items-center justify-center gap-8 border bg-base-100 shadow-sm">
+            <div className="flex items-center justify-center gap-8 border bg-base-100 shadow-sm p-4">
             <figure>
                 <img
                 src={photo}

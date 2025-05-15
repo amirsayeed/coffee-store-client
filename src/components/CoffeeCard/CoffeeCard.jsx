@@ -1,8 +1,47 @@
 import React from 'react';
+import { IoIosEye } from 'react-icons/io';
+import { MdDeleteOutline, MdEdit } from 'react-icons/md';
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 
-const CoffeeCard = ({coffee}) => {
+const CoffeeCard = ({coffee, coffees, setCoffees}) => {
     const {_id,name,chef,price,photo} = coffee;
+
+    const handleDelete = (id) =>{
+        console.log(id);
+
+        Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            
+            fetch(`http://localhost:5000/coffees/${_id}`, {
+                method: "DELETE"
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                if(data.deletedCount){
+                console.log('after delete', data);
+                Swal.fire({
+                title: "Deleted!",
+                text: "Your Coffee has been deleted.",
+                icon: "success"
+                });
+
+                const remaining = coffees.filter(cof=> cof._id !== _id);
+                setCoffees(remaining);
+            }
+            })
+            
+        }
+        });
+    }
 
     return (
         <div>
@@ -18,9 +57,11 @@ const CoffeeCard = ({coffee}) => {
                         <p>Price : {price} Tk.</p>
                     </div>
                     <div className='flex flex-col gap-3'>
-                        <Link to={`/coffees/${_id}`} className='btn'>View</Link>
-                        <button className='btn'>Edit</button>
-                        <button className='btn'>Delete</button>
+                        <Link to={`/coffees/${_id}`} className='btn'><IoIosEye size={20} /></Link>
+                        <Link to={`updateCoffee/${_id}`}>
+                            <button className='btn'><MdEdit size={20} /></button>
+                        </Link>
+                        <button onClick={()=>handleDelete(_id)} className='btn'><MdDeleteOutline size={20} /></button>
                     </div>
                 </div>
             </div>
