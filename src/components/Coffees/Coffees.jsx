@@ -7,9 +7,9 @@ const Coffees = ({coffees,setCoffees}) => {
                 <div className='space-y-3 text-center'>
                     <p>--- Sip & Savor ---</p>
                     <h2 className="text-2xl font-bold text-center">Our Popular Products</h2>
-                    <button className='btn'>Add Coffee <BsFillCupHotFill size={15} /></button>
+                    <button className='btn bg-[#D2B48C]'>Add Coffee <BsFillCupHotFill size={15} /></button>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-10'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mt-10'>
                 {
                     coffees.map(coffee => <CoffeeCard key={coffee._id} coffee={coffee}
                     coffees={coffees}

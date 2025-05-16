@@ -5,7 +5,7 @@ import icon3 from '../../assets/icons/3.png'
 import icon4 from '../../assets/icons/4.png'
 const Speciality = () => {
     return (
-        <div className='grid grid-cols-4 gap-5 bg-[#ECEAE3] p-4'>
+        <div className='max-w-7xl mx-auto grid grid-cols-4 gap-5 bg-[#ECEAE3] p-4'>
             <div className='space-y-2 text-[#331A15]'>
                 <img src={icon1} alt="" />
                 <h3 className="text-base font-bold">Awesome Aroma</h3>

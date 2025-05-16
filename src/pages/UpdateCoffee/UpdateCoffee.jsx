@@ -41,7 +41,7 @@ const UpdateCoffee = () => {
                 <LuMoveLeft size={15} />
                 <Link to='/' className='text-base font-semibold'> Back to home</Link>
             </div>
-            <div className='p-12 space-y-3 text-center'>
+            <div className='p-12 space-y-3 text-center bg-base-200'>
                 <h3 className="text-3xl font-semibold">Update Coffee</h3>
                 <p>It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
 
@@ -77,7 +77,7 @@ const UpdateCoffee = () => {
                         </fieldset>
                     </div>
                     <div className='p-4'>
-                        <input type='submit' className='btn w-full' value='Update Coffee'/>
+                        <input type='submit' className='btn w-full bg-[#D2B48C]' value='Update Coffee'/>
                     </div>
                 </form>
             </div>

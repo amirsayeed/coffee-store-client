@@ -45,10 +45,10 @@ const CoffeeCard = ({coffee, coffees, setCoffees}) => {
 
     return (
         <div>
-            <div className="card card-side bg-base-100 shadow-sm border-2 gap-3 p-3">
+            <div className="card card-side bg-base-100 shadow-sm border-2 gap-3 p-5">
                 <figure>
                     <img
-                    src={photo} />
+                    src={photo} className='w-30 h-36 object-cover' />
                 </figure>
                 <div className='flex items-center justify-around w-full'>
                     <div className="space-y-3">
