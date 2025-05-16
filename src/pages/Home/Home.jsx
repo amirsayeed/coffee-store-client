@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
-import CoffeeCard from '../../components/CoffeeCard/CoffeeCard';
 import Banner from '../../components/Banner/Banner';
+import Speciality from '../../components/Speciality/Speciality';
+import Coffees from '../../components/Coffees/Coffees';
+import coffeeCup from '../../assets/more/4.png'
+import coffeeShop from '../../assets/more/5.png'
+
 
 const Home = () => {
     const coffeeData = useLoaderData();
@@ -11,19 +15,11 @@ const Home = () => {
     return (
         <div>
             <Banner/>
-            <div className='my-20'>
-                <div className='space-y-3 text-center'>
-                    <p>--- Sip & Savor ---</p>
-                    <h2 className="text-2xl font-bold text-center">Our Popular Products</h2>
-                    <button>Add Coffee</button>
-                </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-10'>
-                {
-                    coffees.map(coffee => <CoffeeCard key={coffee._id} coffee={coffee}
-                    coffees={coffees}
-                    setCoffees={setCoffees}/>)
-                }
-                </div>
+            <Speciality/>
+            <div style={{backgroundImage: `url(${coffeeCup}), url(${coffeeShop})`, backgroundPosition: 'top left, bottom right',
+            backgroundRepeat: 'no-repeat'
+        }}>
+                <Coffees coffees={coffees} setCoffees={setCoffees}/>
             </div>
         </div>
     );

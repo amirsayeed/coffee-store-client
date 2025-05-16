@@ -7,7 +7,7 @@ const Navbar = () => {
             <div style={{ backgroundImage: `url(${navBg})` }} className="navbar shadow-sm">
                 <div className="w-full mx-auto flex items-center justify-center gap-2">
                     <img className='w-10 h-10 object-cover' src={logo} alt="" />
-                    <a className="text-3xl">Espresso Emporium</a>
+                    <a className="text-3xl text-white font-bold">Espresso Emporium</a>
                 </div>
             </div>
         </div>

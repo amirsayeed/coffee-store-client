@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { LuMoveLeft } from 'react-icons/lu';
+import { Link, useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 
 const UpdateCoffee = () => {
@@ -35,7 +36,11 @@ const UpdateCoffee = () => {
     }
 
     return (
-        <div className='p-24'>
+        <div className='px-24 py-10'>
+            <div className='pb-6 flex items-center gap-2'>
+                <LuMoveLeft size={15} />
+                <Link to='/' className='text-base font-semibold'> Back to home</Link>
+            </div>
             <div className='p-12 space-y-3 text-center'>
                 <h3 className="text-3xl font-semibold">Update Coffee</h3>
                 <p>It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
