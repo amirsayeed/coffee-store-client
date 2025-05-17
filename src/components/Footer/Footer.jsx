@@ -77,7 +77,7 @@ const Footer = () => {
                     <div>
                         <textarea id="message" rows="4" placeholder="Message" className="w-full p-3 rounded dark:bg-base-100"></textarea>
                     </div>
-                    <button type="submit" className="btn p-3 text-sm font-medium rounded-2xl dark:bg-base-100">Send Message</button>
+                    <button type="submit" className="btn p-3 text-sm font-medium rounded-2xl outline bg-base-100">Send Message</button>
                 </form>
             </div>
         </div>

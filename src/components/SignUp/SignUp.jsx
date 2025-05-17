@@ -25,7 +25,7 @@ const SignUp = () => {
             lastSignInTime: result.user?.metadata?.lastSignInTime
             }
 
-            fetch('http://localhost:5000/users',{
+            fetch('https://coffee-store-server-omega-nine.vercel.app/users',{
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

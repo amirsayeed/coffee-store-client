@@ -9,7 +9,7 @@ const Coffees = ({coffees,setCoffees}) => {
                     <p>--- Sip & Savor ---</p>
                     <h2 className="text-2xl font-bold text-center">Our Popular Products</h2>
                     <Link to ='/addCoffee'>
-                        <button className='btn bg-[#D2B48C]'>Add Coffee <BsFillCupHotFill size={15} /></button>
+                        <button onClick={()=>window.scroll(0,0)} className='btn bg-[#D2B48C]'>Add Coffee <BsFillCupHotFill size={15} /></button>
                     </Link>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mt-10'>

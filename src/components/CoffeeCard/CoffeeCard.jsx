@@ -21,7 +21,7 @@ const CoffeeCard = ({coffee, coffees, setCoffees}) => {
         }).then((result) => {
         if (result.isConfirmed) {
             
-            fetch(`http://localhost:5000/coffees/${_id}`, {
+            fetch(`https://coffee-store-server-omega-nine.vercel.app/coffees/${_id}`, {
                 method: "DELETE"
             })
             .then(res=>res.json())
@@ -57,9 +57,11 @@ const CoffeeCard = ({coffee, coffees, setCoffees}) => {
                         <p>Price : {price} Tk.</p>
                     </div>
                     <div className='flex flex-col gap-3'>
-                        <Link to={`/coffees/${_id}`} className='btn'><IoIosEye size={20} /></Link>
+                        <Link to={`/coffees/${_id}`}>
+                            <button onClick={()=>window.scroll(0,0)}  className='btn'><IoIosEye size={20} /></button>
+                        </Link>
                         <Link to={`updateCoffee/${_id}`}>
-                            <button className='btn'><MdEdit size={20} /></button>
+                            <button onClick={()=>window.scroll(0,0)} className='btn'><MdEdit size={20} /></button>
                         </Link>
                         <button onClick={()=>handleDelete(_id)} className='btn'><MdDeleteOutline size={20} /></button>
                     </div>

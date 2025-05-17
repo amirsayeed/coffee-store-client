@@ -2,6 +2,7 @@ import React from 'react';
 import { LuMoveLeft } from 'react-icons/lu';
 import { Link, useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
+import updateBg from '../../assets/more/11.png'
 
 const UpdateCoffee = () => {
     const {_id,name,chef,supplier,category,details,photo,price} = useLoaderData();
@@ -13,7 +14,7 @@ const UpdateCoffee = () => {
         const updateCoffeeData = Object.fromEntries(formData.entries());
         console.log(updateCoffeeData); 
 
-        fetch(`http://localhost:5000/coffees/${_id}`, {
+        fetch(`https://coffee-store-server-omega-nine.vercel.app/coffees/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -36,14 +37,14 @@ const UpdateCoffee = () => {
     }
 
     return (
-        <div className='px-24 py-10'>
+        <div style={{backgroundImage: `url(${updateBg})`}} className='px-24 py-10'>
             <div className='pb-6 flex items-center gap-2'>
                 <LuMoveLeft size={15} />
                 <Link to='/' className='text-base font-semibold'> Back to home</Link>
             </div>
             <div className='p-12 space-y-3 text-center bg-base-200'>
-                <h3 className="text-3xl font-semibold">Update Coffee</h3>
-                <p>It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
+                <h3 className="text-3xl font-semibold">Update Existing Coffee Details</h3>
+                <p className='max-w-3xl mx-auto'>It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
 
                 <form onSubmit={handleUpdateCoffee}>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>

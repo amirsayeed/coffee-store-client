@@ -5,6 +5,7 @@ import Speciality from '../../components/Speciality/Speciality';
 import Coffees from '../../components/Coffees/Coffees';
 import coffeeCup from '../../assets/more/4.png'
 import coffeeShop from '../../assets/more/5.png'
+import FollowInsta from '../../components/FollowInsta/FollowInsta';
 
 
 const Home = () => {
@@ -17,10 +18,10 @@ const Home = () => {
             <Banner/>
             <Speciality/>
             <div style={{backgroundImage: `url(${coffeeCup}), url(${coffeeShop})`, backgroundPosition: 'top left, bottom right',
-            backgroundRepeat: 'no-repeat'
-        }}>
+            backgroundRepeat: 'no-repeat'}}>
                 <Coffees coffees={coffees} setCoffees={setCoffees}/>
             </div>
+            <FollowInsta/>
         </div>
     );
 };
