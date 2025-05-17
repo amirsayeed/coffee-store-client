@@ -10,11 +10,13 @@ import CoffeeDetails from "../pages/CoffeeDetails/CoffeeDetails";
 import SignIn from "../components/SignIn/SignIn";
 import SignUp from "../components/SignUp/SignUp";
 import Users from "../components/Users/Users";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout/>,
+    errorElement: <ErrorPage/> ,
     children: [
         {
             index: true,

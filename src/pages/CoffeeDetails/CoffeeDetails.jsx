@@ -11,7 +11,7 @@ const CoffeeDetails = () => {
                             <LuMoveLeft size={15} />
                             <Link to='/' className='text-base font-semibold'> Back to home</Link>
                         </div>
-            <div className="flex items-center justify-center gap-8 border bg-base-100 shadow-sm p-6">
+            <div className="flex items-center justify-center gap-8 bg-base-300 shadow-md p-6">
             <figure>
                 <img
                 src={photo}
