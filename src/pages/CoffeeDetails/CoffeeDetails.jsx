@@ -1,12 +1,17 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { LuMoveLeft } from 'react-icons/lu';
+import { Link, useLoaderData } from 'react-router';
 
 const CoffeeDetails = () => {
     const {name,price,supplier,chef,photo,category,details} = useLoaderData();
 
     return (
-        <div className='max-w-4xl mx-auto my-10'>
-            <div className="flex items-center justify-center gap-8 border bg-base-100 shadow-sm p-4">
+        <div className='max-w-4xl mx-auto my-20'>
+            <div className='pb-6 flex items-center gap-2'>
+                            <LuMoveLeft size={15} />
+                            <Link to='/' className='text-base font-semibold'> Back to home</Link>
+                        </div>
+            <div className="flex items-center justify-center gap-8 border bg-base-100 shadow-sm p-6">
             <figure>
                 <img
                 src={photo}
