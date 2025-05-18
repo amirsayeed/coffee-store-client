@@ -1,6 +1,5 @@
 import {
-  createBrowserRouter,
-  RouterProvider,
+  createBrowserRouter
 } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
@@ -11,6 +10,8 @@ import SignIn from "../components/SignIn/SignIn";
 import SignUp from "../components/SignUp/SignUp";
 import Users from "../components/Users/Users";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AuthLayout from "../layouts/AuthLayout";
+import PrivateRoute from "../context/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
         },
         {
             path: 'addCoffee',
-            Component: AddCofee
+            element: <PrivateRoute><AddCofee/></PrivateRoute>
         },
         {
             path: '/coffees/:id',
@@ -38,15 +39,7 @@ export const router = createBrowserRouter([
             path: 'updateCoffee/:id',
             loader: ({params})=> fetch(`https://coffee-store-server-omega-nine.vercel.app/coffees/${params.id}`),
             hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-bars loading-xl"></span></div>,
-            Component: UpdateCoffee
-        },
-        {
-          path: 'signIn',
-          Component: SignIn
-        },
-        {
-          path: 'signUp',
-          Component: SignUp
+            element: <PrivateRoute><UpdateCoffee/></PrivateRoute>
         },
         {
           path: '/users',
@@ -56,4 +49,19 @@ export const router = createBrowserRouter([
         }
     ]
   },
+  {
+    path: '/auth',
+    Component: AuthLayout,
+    errorElement: <ErrorPage/>,
+    children: [
+        {
+          path: 'signin',
+          Component: SignIn
+        },
+        {
+          path: 'signUp',
+          Component: SignUp
+        }
+    ]
+  }
 ]);

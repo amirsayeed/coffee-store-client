@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
 import { IoIosEye } from 'react-icons/io';
 import { MdDeleteOutline, MdEdit } from 'react-icons/md';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../context/AuthContext';
 
 const CoffeeCard = ({coffee, coffees, setCoffees}) => {
     const {_id,name,chef,price,photo} = coffee;
+    const {user} = use(AuthContext);
 
     const handleDelete = (id) =>{
         console.log(id);
@@ -63,7 +65,10 @@ const CoffeeCard = ({coffee, coffees, setCoffees}) => {
                         <Link to={`updateCoffee/${_id}`}>
                             <button onClick={()=>window.scroll(0,0)} className='btn'><MdEdit size={20} /></button>
                         </Link>
-                        <button onClick={()=>handleDelete(_id)} className='btn'><MdDeleteOutline size={20} /></button>
+                        <button onClick={()=>{
+                            {user ?
+                            handleDelete(_id): alert("Please login first")}
+                        }} className='btn'><MdDeleteOutline size={20} /></button>
                     </div>
                 </div>
             </div>

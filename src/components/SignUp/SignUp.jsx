@@ -1,11 +1,12 @@
 import React, { use } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const {createUser} = use(AuthContext);
     //console.log(createUser);
+    const navigate = useNavigate();
 
     const handleSignUp = e =>{
         e.preventDefault();
@@ -43,6 +44,7 @@ const SignUp = () => {
                 showConfirmButton: false,
                 timer: 1500
                 });
+                navigate('/');
                 }
             })
         })
@@ -69,7 +71,7 @@ const SignUp = () => {
                     <input type="email" name='email' className="input" placeholder="Email" />
                     <label className="label">Password</label>
                     <input type="password" name='password' className="input" placeholder="Password" />
-                    <div><p className="link link-hover">Already have an account? Please <Link className='text-blue-400 underline' to='/signIn'>Sign In</Link> </p></div>
+                    <div><p className="link link-hover">Already have an account? Please <Link className='text-blue-400 underline' to='/auth/signIn'>Sign In</Link> </p></div>
                     <button type='submit' className="btn btn-neutral mt-4">Sign up</button>
                 </form>
             </div>
