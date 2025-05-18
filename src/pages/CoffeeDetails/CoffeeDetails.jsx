@@ -8,12 +8,12 @@ const CoffeeDetails = () => {
 
     return (
         <div style={{backgroundImage: `url(${detailsBg})`}}>
-            <div className='max-w-4xl mx-auto py-20'>
+            <div className='max-w-4xl mx-auto py-20 px-1'>
             <div className='pb-6 flex items-center gap-2'>
                             <LuMoveLeft size={15} />
                             <Link to='/' className='text-base font-semibold'> Back to home</Link>
                         </div>
-            <div className="flex items-center justify-center gap-8 bg-base-300 shadow-md p-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 bg-base-300 shadow-md p-6">
             <figure>
                 <img
                 src={photo}

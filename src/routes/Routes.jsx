@@ -21,6 +21,7 @@ export const router = createBrowserRouter([
         {
             index: true,
             loader: ()=>fetch('https://coffee-store-server-omega-nine.vercel.app/coffees'),
+            hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-bars loading-xl"></span></div>,
             Component: Home
         },
         {
@@ -30,11 +31,13 @@ export const router = createBrowserRouter([
         {
             path: '/coffees/:id',
             loader: ({params})=> fetch(`https://coffee-store-server-omega-nine.vercel.app/coffees/${params.id}`),
+            hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-bars loading-xl"></span></div>,
             Component: CoffeeDetails
         },
         {
             path: 'updateCoffee/:id',
             loader: ({params})=> fetch(`https://coffee-store-server-omega-nine.vercel.app/coffees/${params.id}`),
+            hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-bars loading-xl"></span></div>,
             Component: UpdateCoffee
         },
         {
@@ -48,6 +51,7 @@ export const router = createBrowserRouter([
         {
           path: '/users',
           loader: ()=> fetch('https://coffee-store-server-omega-nine.vercel.app/users'),
+          hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-bars loading-xl"></span></div>,
           Component: Users
         }
     ]

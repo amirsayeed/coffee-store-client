@@ -37,7 +37,7 @@ const UpdateCoffee = () => {
     }
 
     return (
-        <div style={{backgroundImage: `url(${updateBg})`}} className='px-24 py-10'>
+        <div style={{backgroundImage: `url(${updateBg})`}} className='px-12 md:px-24 py-10'>
             <div className='pb-6 flex items-center gap-2'>
                 <LuMoveLeft size={15} />
                 <Link to='/' className='text-base font-semibold'> Back to home</Link>

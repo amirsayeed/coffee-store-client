@@ -13,7 +13,7 @@ const FollowInsta = () => {
         <div className='max-w-7xl mx-auto my-20 text-center space-y-2'>
             <p>Follow Us Now</p>
             <h2 className="text-3xl font-bold">Follow on Instagram</h2>
-            <div className='grid grid-cols-4 gap-4 mt-5'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2 lg:px-1 mt-5'>
                 <img className='w-[300px] h-[300px] object-cover rounded-xl' src={cup1} alt="" />
                 <img className='w-[300px] h-[300px] object-cover rounded-xl' src={cup2} alt="" />
                 <img className='w-[300px] h-[300px] object-cover rounded-xl' src={cup3} alt="" />

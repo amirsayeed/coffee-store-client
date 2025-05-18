@@ -53,7 +53,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="card bg-base-100 max-w-sm mx-auto shrink-0 shadow-2xl p-4 mt-10">
+        <div className="card bg-base-100 max-w-sm mx-auto shrink-0 shadow-2xl p-4 my-10">
             <div className="card-body">
                 <h1 className="text-4xl font-bold text-center">Sign Up!</h1>
                 <form onSubmit={handleSignUp} className="fieldset">

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const SignIn = () => {
     return (
-        <div className="card bg-base-100 max-w-sm mx-auto shrink-0 shadow-2xl p-4 mt-10">
+        <div className="card bg-base-100 max-w-sm mx-auto shrink-0 shadow-2xl p-4 my-10">
             <h1 className="text-4xl font-bold text-center">Login now!</h1>
             <div className="card-body">
                 <form className="fieldset">
