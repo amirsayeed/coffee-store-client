@@ -4,6 +4,7 @@ import { MdDeleteOutline, MdEdit } from 'react-icons/md';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const CoffeeCard = ({coffee, coffees, setCoffees}) => {
     const {_id,name,chef,price,photo} = coffee;
@@ -67,7 +68,7 @@ const CoffeeCard = ({coffee, coffees, setCoffees}) => {
                         </Link>
                         <button onClick={()=>{
                             {user ?
-                            handleDelete(_id): alert("Please login first")}
+                            handleDelete(_id): toast.warn("Please login first",{position:'top-center'})}
                         }} className='btn'><MdDeleteOutline size={20} /></button>
                     </div>
                 </div>

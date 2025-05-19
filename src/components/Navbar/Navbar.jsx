@@ -3,12 +3,13 @@ import logo from '../../assets/more/logo1.png'
 import navBg from '../../assets/more/15.jpg';
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router';
+import { toast } from 'react-toastify';
 const Navbar = () => {
     const {user,logOut} = use(AuthContext);
 
     const handleLogOut = () =>{
         logOut().then(()=>{
-            alert('Logout successful');
+            toast.success('Logout successful');
         })
         .catch(error=>{
             console.log(error);
@@ -25,7 +26,7 @@ const Navbar = () => {
                 <div className='navbar-end'>                       
                         {user ? 
                             <div className='flex items-center gap-1'>
-                                <p className='text-white'>{user.email}</p>
+                                <p className='hidden md:flex text-white'>{user.email}</p>
                                 <button onClick={handleLogOut} className='btn bg-[#D2B48C]'>Log out</button>
                             </div>
                              :

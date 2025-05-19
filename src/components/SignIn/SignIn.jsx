@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const SignIn = () => {
     const {logIn} = use(AuthContext);
@@ -20,6 +21,7 @@ const SignIn = () => {
         logIn(email,password).then(result=>{
             console.log(result.user);
             navigate(`${location.state ? location.state : '/'}`);
+            toast.success('Successfully logged in.')
         })
         .catch(error=>{
             console.log(error.message);

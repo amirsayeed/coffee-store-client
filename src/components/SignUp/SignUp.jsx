@@ -66,7 +66,7 @@ const SignUp = () => {
                     <label className="label">Phone</label>
                     <input type="text" name='phone' className="input" placeholder="Phone" />
                     <label className="label">Photo</label>
-                    <input type="text" name='photo' className="input" placeholder="Phone URL" />
+                    <input type="text" name='photo' className="input" placeholder="Photo URL" />
                     <label className="label">Email</label>
                     <input type="email" name='email' className="input" placeholder="Email" />
                     <label className="label">Password</label>

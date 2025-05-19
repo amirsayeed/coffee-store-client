@@ -12,6 +12,8 @@ import Users from "../components/Users/Users";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AuthLayout from "../layouts/AuthLayout";
 import PrivateRoute from "../context/PrivateRoute";
+import UserDetails from "../pages/UserDetails/UserDetails";
+import UpdateUser from "../pages/UpdateUser/UpdateUser";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +48,18 @@ export const router = createBrowserRouter([
           loader: ()=> fetch('https://coffee-store-server-omega-nine.vercel.app/users'),
           hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-bars loading-xl"></span></div>,
           Component: Users
+        },
+        {
+          path: '/users/:id',
+          loader: ({params})=> fetch(`https://coffee-store-server-omega-nine.vercel.app/users/${params.id}`),
+          hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-bars loading-xl"></span></div>,
+          Component: UserDetails
+        },
+        {
+          path: '/updateUser/:id',
+          loader: ({params})=> fetch(`https://coffee-store-server-omega-nine.vercel.app/users/${params.id}`),
+          hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-bars loading-xl"></span></div>,
+          Component: UpdateUser
         }
     ]
   },
