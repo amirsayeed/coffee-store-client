@@ -3,6 +3,7 @@ import { LuMoveLeft } from 'react-icons/lu';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 import addCoffeeBg from '../../assets/more/11.png'
+import axios from 'axios';
 
 const AddCofee = () => {
 
@@ -13,16 +14,17 @@ const AddCofee = () => {
         const newCoffee = Object.fromEntries(formData.entries());
         console.log(newCoffee);
 
-        fetch('https://coffee-store-server-omega-nine.vercel.app/coffees', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(newCoffee)
-        })
-        .then(res=>res.json())
+        axios.post('https://coffee-store-server-omega-nine.vercel.app/coffees', newCoffee)
+        // fetch('https://coffee-store-server-omega-nine.vercel.app/coffees', {
+        //     method: "POST",
+        //     headers: {
+        //         'content-type': 'application/json',
+        //     },
+        //     body: JSON.stringify(newCoffee)
+        // })
+        // .then(res=>res.json())
         .then(data=>{
-            if(data.insertedId){
+            if(data.data.insertedId){
             console.log('after adding', data);
             Swal.fire({
                 title: "Coffee added successfully!",

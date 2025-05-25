@@ -3,6 +3,7 @@ import { LuMoveLeft } from 'react-icons/lu';
 import { Link, useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 import updateBg from '../../assets/more/11.png'
+import axios from 'axios';
 
 const UpdateCoffee = () => {
     const {_id,name,chef,supplier,category,details,photo,price} = useLoaderData();
@@ -14,16 +15,18 @@ const UpdateCoffee = () => {
         const updateCoffeeData = Object.fromEntries(formData.entries());
         console.log(updateCoffeeData); 
 
-        fetch(`https://coffee-store-server-omega-nine.vercel.app/coffees/${_id}`, {
-            method: "PUT",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updateCoffeeData)
-        })
-        .then(res=>res.json())
+        axios.put(`https://coffee-store-server-omega-nine.vercel.app/coffees/${_id}`, updateCoffeeData)
+        // fetch(`https://coffee-store-server-omega-nine.vercel.app/coffees/${_id}`, {
+        //     method: "PUT",
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(updateCoffeeData)
+        // })
+        // .then(res=>res.json())
         .then(data=>{
-            if(data.modifiedCount){
+            console.log(data.data);
+            if(data.data.modifiedCount){
             console.log('after update',data);
             Swal.fire({
             position: "top-end",

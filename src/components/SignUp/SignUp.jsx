@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const SignUp = () => {
     const {createUser} = use(AuthContext);
@@ -26,16 +27,17 @@ const SignUp = () => {
             lastSignInTime: result.user?.metadata?.lastSignInTime
             }
 
-            fetch('https://coffee-store-server-omega-nine.vercel.app/users',{
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(userProfile)
-            })
-            .then(res=>res.json())
+            axios.post('https://coffee-store-server-omega-nine.vercel.app/users', userProfile)
+            // fetch('https://coffee-store-server-omega-nine.vercel.app/users',{
+            //     method: 'POST',
+            //     headers: {
+            //         'content-type': 'application/json'
+            //     },
+            //     body: JSON.stringify(userProfile)
+            // })
+            // .then(res=>res.json())
             .then(data=>{
-                if(data.insertedId){
+                if(data.data.insertedId){
                 console.log('profile after save', data)
                 Swal.fire({
                 position: "top-end",
