@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
             path: '/coffees/:id',
             loader: ({params})=> fetch(`https://coffee-store-server-omega-nine.vercel.app/coffees/${params.id}`),
             hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-bars loading-xl"></span></div>,
-            Component: CoffeeDetails
+            element: <PrivateRoute><CoffeeDetails/></PrivateRoute>
         },
         {
             path: 'updateCoffee/:id',

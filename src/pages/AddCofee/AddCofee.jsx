@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { use } from 'react';
 import { LuMoveLeft } from 'react-icons/lu';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 import addCoffeeBg from '../../assets/more/11.png'
 import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
 
 const AddCofee = () => {
-
+    const {user} = use(AuthContext);
     const handleAddCoffee = e =>{
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const newCoffee = Object.fromEntries(formData.entries());
+        newCoffee.email = user?.email;
+        newCoffee.likedBy = [];
+        
         console.log(newCoffee);
 
         axios.post('https://coffee-store-server-omega-nine.vercel.app/coffees', newCoffee)

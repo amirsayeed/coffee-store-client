@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { LuMoveLeft } from 'react-icons/lu';
 import { Link, useLoaderData } from 'react-router';
 import detailsBg from '../../assets/more/11.png'
+import { AuthContext } from '../../context/AuthContext';
+import axios from 'axios';
 
 const CoffeeDetails = () => {
-    const {name,price,supplier,chef,photo,category,details} = useLoaderData();
+    const {user} = use(AuthContext);
+    const {_id,name,price,supplier,chef,photo,category,details,likedBy,email} = useLoaderData();
+    const [liked, setLiked] = useState(likedBy.includes(user?.email));
+    const [likeCount, setLikeCount] = useState(likedBy.length);
+    console.log('is liked ',liked);
+
+    useEffect(()=>{
+        setLiked(likedBy.includes(user?.email))
+    },[likedBy,user])
+     
+    const handleLike = () =>{
+        if(user?.email === email){
+           return alert('lojja kre nah!')
+        }
+        axios.patch(`https://coffee-store-server-omega-nine.vercel.app/like/${_id}`,{email: user?.email})
+        .then(res=>{
+            console.log(res?.data);
+            const isLiked = res?.data?.liked;
+            setLiked(isLiked);
+            setLikeCount(prev=> (isLiked ? prev+ 1 : prev - 1));
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    }
 
     return (
         <div style={{backgroundImage: `url(${detailsBg})`}}>
@@ -26,7 +52,13 @@ const CoffeeDetails = () => {
                 <p>Category: {category}</p>
                 <p>Details: {details}</p>
                 <p>Price: {price}</p>
+                <p>Likes : {likeCount}</p>
+                <div className='flex flex-col md:flex-row gap-3 my-3'>
+                <button className='btn btn-primary'>Order</button>
+                <button onClick={handleLike} className='btn btn-secondary'>👍{liked ?'Liked': 'Like' }</button>
+                </div>
             </div>
+            
             </div>
         </div>
         </div>
