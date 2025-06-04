@@ -63,7 +63,7 @@ const CoffeeCard = ({coffee, coffees, setCoffees}) => {
                         <Link to={`/coffees/${_id}`}>
                             <button onClick={()=>window.scroll(0,0)}  className='btn'><IoIosEye size={20} /></button>
                         </Link>
-                        <Link to={`updateCoffee/${_id}`}>
+                        <Link to={`/updateCoffee/${_id}`}>
                             <button onClick={()=>window.scroll(0,0)} className='btn'><MdEdit size={20} /></button>
                         </Link>
                         <button onClick={()=>{

@@ -14,6 +14,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import PrivateRoute from "../context/PrivateRoute";
 import UserDetails from "../pages/UserDetails/UserDetails";
 import UpdateUser from "../pages/UpdateUser/UpdateUser";
+import MyAddedCoffees from "../pages/MyAddedCoffees/MyAddedCoffees";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ export const router = createBrowserRouter([
             loader: ({params})=> fetch(`https://coffee-store-server-omega-nine.vercel.app/coffees/${params.id}`),
             hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-bars loading-xl"></span></div>,
             element: <PrivateRoute><UpdateCoffee/></PrivateRoute>
+        },
+        {
+          path:'myCoffees/:email',
+          loader: ({params})=> fetch(`https://coffee-store-server-omega-nine.vercel.app/myCoffees/${params.email}`),
+          element:<PrivateRoute><MyAddedCoffees/></PrivateRoute>
         },
         {
           path: '/users',
