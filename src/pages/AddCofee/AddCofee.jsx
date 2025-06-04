@@ -13,6 +13,7 @@ const AddCofee = () => {
         const form = e.target;
         const formData = new FormData(form);
         const newCoffee = Object.fromEntries(formData.entries());
+        newCoffee.quantity = parseInt(newCoffee.quantity);
         newCoffee.email = user?.email;
         newCoffee.likedBy = [];
         
@@ -63,6 +64,10 @@ const AddCofee = () => {
                             <fieldset className='fieldset rounded-box p-4'>
                                 <label className="label">Supplier</label>
                                 <input type="text" name='supplier' className="input w-full" placeholder="Supplier" />
+                            </fieldset>
+                            <fieldset className='fieldset rounded-box p-4'>
+                                <label className="label">Quantity</label>
+                                <input type="text" name='quantity' className="input w-full" placeholder="Quantity" />
                             </fieldset>
                             <fieldset className='fieldset rounded-box p-4'>
                                 <label className="label">Price</label>

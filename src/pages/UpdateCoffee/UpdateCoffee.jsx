@@ -6,7 +6,7 @@ import updateBg from '../../assets/more/11.png'
 import axios from 'axios';
 
 const UpdateCoffee = () => {
-    const {_id,name,chef,supplier,category,details,photo,price} = useLoaderData();
+    const {_id,name,chef,supplier,category,details,quantity,photo,price} = useLoaderData();
 
     const handleUpdateCoffee = e =>{
         e.preventDefault();
@@ -62,6 +62,10 @@ const UpdateCoffee = () => {
                         <fieldset className='fieldset rounded-box p-4'>
                             <label className="label">Supplier</label>
                             <input type="text" name='supplier' defaultValue={supplier} className="input w-full" placeholder="Supplier" />
+                        </fieldset>
+                        <fieldset className='fieldset rounded-box p-4'>
+                            <label className="label">Quantity</label>
+                            <input type="text" name='quantity' defaultValue={quantity} className="input w-full" placeholder="Quantity" />
                         </fieldset>
                         <fieldset className='fieldset rounded-box p-4'>
                             <label className="label">Price</label>

@@ -7,7 +7,9 @@ import axios from 'axios';
 
 const CoffeeDetails = () => {
     const {user} = use(AuthContext);
-    const {_id,name,price,supplier,chef,photo,category,details,likedBy,email} = useLoaderData();
+    const CoffeeDetails = useLoaderData();
+    const [coffee,setCoffee] = useState(CoffeeDetails);
+    const {_id,name,price,supplier,chef,photo,category,details,quantity,likedBy,email} = coffee;
     const [liked, setLiked] = useState(likedBy.includes(user?.email));
     const [likeCount, setLikeCount] = useState(likedBy.length);
     console.log('is liked ',liked);
@@ -26,6 +28,28 @@ const CoffeeDetails = () => {
             const isLiked = res?.data?.liked;
             setLiked(isLiked);
             setLikeCount(prev=> (isLiked ? prev+ 1 : prev - 1));
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    }
+
+    const handleOrder = () =>{
+        if(user?.email === email){
+            return alert("Tomar nijer coffee")
+        }
+
+        const orderCoffee = {
+            coffeeId: _id,
+            customerEmail: user?.email
+        }
+
+        axios.post(`https://coffee-store-server-omega-nine.vercel.app/place-order/${_id}`, orderCoffee)
+        .then(res=>{
+            console.log(res?.data);
+            setCoffee(prev => {
+                return { ...prev, quantity: prev.quantity - 1 };
+            })
         })
         .catch(error=>{
             console.log(error)
@@ -51,10 +75,11 @@ const CoffeeDetails = () => {
                 <p>Supplier: {supplier}</p>
                 <p>Category: {category}</p>
                 <p>Details: {details}</p>
+                <p>Quantity: {quantity}</p>
                 <p>Price: {price}</p>
                 <p>Likes : {likeCount}</p>
                 <div className='flex flex-col md:flex-row gap-3 my-3'>
-                <button className='btn btn-primary'>Order</button>
+                <button onClick={handleOrder} className='btn btn-primary'>Order</button>
                 <button onClick={handleLike} className='btn btn-secondary'>👍{liked ?'Liked': 'Like' }</button>
                 </div>
             </div>
