@@ -20,7 +20,7 @@ const Navbar = () => {
                     <li><NavLink to='/'>Home</NavLink></li>
                     {user && <>
                             <li><NavLink to={`/myCoffees/${user?.email}`}>My Coffees</NavLink></li>
-                            <li><NavLink>My Orders</NavLink></li>
+                            <li><NavLink to='/my-orders'>My Orders</NavLink></li>
                     </>}
                   </>
     return (

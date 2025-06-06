@@ -15,6 +15,7 @@ import PrivateRoute from "../context/PrivateRoute";
 import UserDetails from "../pages/UserDetails/UserDetails";
 import UpdateUser from "../pages/UpdateUser/UpdateUser";
 import MyAddedCoffees from "../pages/MyAddedCoffees/MyAddedCoffees";
+import MyOrders from "../pages/MyOrders/MyOrders";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
           path:'myCoffees/:email',
           loader: ({params})=> fetch(`https://coffee-store-server-omega-nine.vercel.app/myCoffees/${params.email}`),
           element:<PrivateRoute><MyAddedCoffees/></PrivateRoute>
+        },
+        {
+          path:'/my-orders',
+          element:<PrivateRoute><MyOrders/></PrivateRoute>
         },
         {
           path: '/users',

@@ -4,6 +4,7 @@ import { Link, useLoaderData } from 'react-router';
 import detailsBg from '../../assets/more/11.png'
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const CoffeeDetails = () => {
     const {user} = use(AuthContext);
@@ -12,7 +13,7 @@ const CoffeeDetails = () => {
     const {_id,name,price,supplier,chef,photo,category,details,quantity,likedBy,email} = coffee;
     const [liked, setLiked] = useState(likedBy.includes(user?.email));
     const [likeCount, setLikeCount] = useState(likedBy.length);
-    console.log('is liked ',liked);
+    //console.log('is liked ',liked);
 
     useEffect(()=>{
         setLiked(likedBy.includes(user?.email))
@@ -50,6 +51,11 @@ const CoffeeDetails = () => {
             setCoffee(prev => {
                 return { ...prev, quantity: prev.quantity - 1 };
             })
+            Swal.fire({
+                        title: "Coffee ordered successfully!",
+                        icon: "success",
+                        draggable: true
+                     });
         })
         .catch(error=>{
             console.log(error)

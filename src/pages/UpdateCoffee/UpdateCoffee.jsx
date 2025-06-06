@@ -13,6 +13,7 @@ const UpdateCoffee = () => {
         const form = e.target;
         const formData = new FormData(form);
         const updateCoffeeData = Object.fromEntries(formData.entries());
+        updateCoffeeData.quantity = parseInt(updateCoffeeData.quantity);
         console.log(updateCoffeeData); 
 
         axios.put(`https://coffee-store-server-omega-nine.vercel.app/coffees/${_id}`, updateCoffeeData)
